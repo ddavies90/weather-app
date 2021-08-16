@@ -30,6 +30,13 @@ exports[`<ForecastSummaries /> renders correctly 1`] = `
       >
         Clear
       </div>
+      <button
+        class="forecast-summary__btn"
+        data-testid="button-click"
+        type="button"
+      >
+        More dets
+      </button>
     </div>
     <div
       class="forecast-summary"
@@ -56,6 +63,13 @@ exports[`<ForecastSummaries /> renders correctly 1`] = `
       >
         Stormy
       </div>
+      <button
+        class="forecast-summary__btn"
+        data-testid="button-click"
+        type="button"
+      >
+        More dets
+      </button>
     </div>
     <div
       class="forecast-summary"
@@ -82,6 +96,13 @@ exports[`<ForecastSummaries /> renders correctly 1`] = `
       >
         Heavy Snow
       </div>
+      <button
+        class="forecast-summary__btn"
+        data-testid="button-click"
+        type="button"
+      >
+        More dets
+      </button>
     </div>
   </div>
 </DocumentFragment>

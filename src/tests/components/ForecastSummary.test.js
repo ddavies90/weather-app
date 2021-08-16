@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import ForecastSummary from "../../components/ForecastSummary";
 
 describe("ForecastSummary />", () => {
@@ -8,7 +8,8 @@ describe("ForecastSummary />", () => {
     date: 1525046400000,
     description: "Clear",
     icon: "800",
-    temperature: { max: 11, min: 4 }
+    temperature: { max: 11, min: 4 },
+    onSelect: jest.fn()
   };
 
   const renderData = (properties) => {
@@ -19,6 +20,7 @@ describe("ForecastSummary />", () => {
         description={properties.description}
         icon={properties.icon}
         temperature={properties.temperature}
+        onSelect={properties.onSelect}
       />
     );
   };
@@ -42,5 +44,13 @@ describe("ForecastSummary />", () => {
       "forecast-summary__description"
     );
     expect(screen.getByTestId("forecast-icon")).toHaveClass("wi-day-sunny");
+  });
+
+  it("calls onSelect function when button clicked", () => {
+    renderData(validProps);
+
+    fireEvent.click(screen.getByTestId("button-click"));
+
+    expect(validProps.onSelect).toBeCalledTimes(1);
   });
 });

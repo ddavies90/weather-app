@@ -27,6 +27,13 @@ exports[`ForecastSummary /> renders correctly 1`] = `
     >
       Clear
     </div>
+    <button
+      class="forecast-summary__btn"
+      data-testid="button-click"
+      type="button"
+    >
+      More dets
+    </button>
   </div>
 </DocumentFragment>
 `;

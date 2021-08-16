@@ -36,14 +36,26 @@ describe("<ForecastSummaries />", () => {
     }
   ];
 
+  const handleForecastSelect = jest.fn();
+
   it("renders correctly", () => {
-    const { asFragment } = render(<ForecastSummaries forecasts={validProps} />);
+    const { asFragment } = render(
+      <ForecastSummaries
+        forecasts={validProps}
+        onForecastSelect={handleForecastSelect}
+      />
+    );
 
     expect(asFragment()).toMatchSnapshot();
   });
 
   it("displays all forecast summary components", () => {
-    render(<ForecastSummaries forecasts={validProps} />);
+    render(
+      <ForecastSummaries
+        forecasts={validProps}
+        onForecastSelect={handleForecastSelect}
+      />
+    );
 
     expect(screen.getAllByTestId("forecast-summary")).toHaveLength(3);
   });
