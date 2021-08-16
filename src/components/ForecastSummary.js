@@ -4,7 +4,7 @@ import "../styles/ForecastSummary.css";
 import WeatherIcon from "react-icons-weather";
 
 const ForecastSummary = (props) => {
-  const { id, date, temperature, description, icon } = props;
+  const { id, date, temperature, description, icon, onSelect } = props;
   const convertedDate = new Date(date).toLocaleDateString("default", {
     weekday: "short",
     day: "numeric",
@@ -21,7 +21,12 @@ const ForecastSummary = (props) => {
         {temperature.max}&deg;C
       </div>
       <div className="forecast-summary__description">{description}</div>
-      <button type="button" className="forecast-summary__btn">
+      <button
+        type="button"
+        data-testid="button-click"
+        className="forecast-summary__btn"
+        onClick={() => onSelect(date)}
+      >
         More dets
       </button>
     </div>
@@ -36,7 +41,8 @@ ForecastSummary.propTypes = {
   temperature: PropTypes.shape({
     max: PropTypes.number,
     min: PropTypes.number
-  }).isRequired
+  }).isRequired,
+  onSelect: PropTypes.func.isRequired
 };
 
 export default ForecastSummary;
