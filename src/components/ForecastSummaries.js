@@ -7,13 +7,12 @@ const ForecastSummaries = ({ forecasts, onForecastSelect }) => {
   return (
     <div className="forecast-summaries">
       {forecasts.map((forecast) => {
-        const { id, date, temperature, icon, description } = forecast;
+        const { date, temperature, icon, description } = forecast;
         return (
           <ForecastSummary
-            key={id}
-            id={id}
+            key={date}
             date={date}
-            icon={icon}
+            icon={icon.toString()}
             temperature={temperature}
             description={description}
             onSelect={onForecastSelect}
@@ -27,9 +26,8 @@ const ForecastSummaries = ({ forecasts, onForecastSelect }) => {
 ForecastSummaries.propTypes = {
   forecasts: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
       date: PropTypes.number.isRequired,
-      icon: PropTypes.string.isRequired,
+      icon: PropTypes.number.isRequired,
       temperature: PropTypes.shape({
         min: PropTypes.number.isRequired,
         max: PropTypes.number.isRequired

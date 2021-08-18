@@ -4,7 +4,7 @@ import "../styles/ForecastSummary.css";
 import WeatherIcon from "react-icons-weather";
 
 const ForecastSummary = (props) => {
-  const { id, date, temperature, description, icon, onSelect } = props;
+  const { date, temperature, description, icon, onSelect } = props;
   const convertedDate = new Date(date).toLocaleDateString("default", {
     weekday: "short",
     day: "numeric",
@@ -14,7 +14,7 @@ const ForecastSummary = (props) => {
   // const dateStr = convertedDate.replace(` ${year}`, "");
 
   return (
-    <div className="forecast-summary" id={id} data-testid="forecast-summary">
+    <div className="forecast-summary" data-testid="forecast-summary">
       <div className="forecast-summary__date">{convertedDate}</div>
       <WeatherIcon name="owm" iconId={icon} data-testid="forecast-icon" />
       <div className="forecast-summary__temperature">
@@ -34,7 +34,6 @@ const ForecastSummary = (props) => {
 };
 
 ForecastSummary.propTypes = {
-  id: PropTypes.number.isRequired,
   date: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,

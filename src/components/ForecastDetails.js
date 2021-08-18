@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "../styles/ForecastDetails.css";
 
 const ForecastDetails = ({ forecast }) => {
   const { date, humidity, temperature, wind } = forecast;
@@ -32,7 +33,6 @@ const ForecastDetails = ({ forecast }) => {
 
 ForecastDetails.propTypes = {
   forecast: PropTypes.shape({
-    id: PropTypes.number,
     date: PropTypes.number,
     temperature: PropTypes.shape({
       max: PropTypes.number,
@@ -43,8 +43,7 @@ ForecastDetails.propTypes = {
       direction: PropTypes.string
     }),
     humidity: PropTypes.number,
-    description: PropTypes.string,
-    icon: PropTypes.string
+    description: PropTypes.string
   }).isRequired
 };
 
