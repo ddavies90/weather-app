@@ -12,7 +12,7 @@ describe("<ForecastSummaries />", () => {
         min: 4
       },
       description: "Clear",
-      icon: "800"
+      icon: 800
     },
     {
       id: 2,
@@ -22,7 +22,7 @@ describe("<ForecastSummaries />", () => {
         min: 8
       },
       description: "Stormy",
-      icon: "211"
+      icon: 211
     },
     {
       id: 3,
@@ -32,7 +32,7 @@ describe("<ForecastSummaries />", () => {
         min: -2
       },
       description: "Heavy Snow",
-      icon: "602"
+      icon: 602
     }
   ];
 
