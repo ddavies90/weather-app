@@ -18,8 +18,11 @@ const App = () => {
     (forecast) => forecast.date === selectedDate
   );
 
-  useEffect(() => {
-    getForecasts(setSelectedDate, setLocation, setForecasts);
+  useEffect(async () => {
+    const response = await getForecasts();
+    setForecasts(response.forecasts);
+    setLocation(response.location);
+    setSelectedDate(response.forecasts[0].date);
   }, []);
 
   return (
