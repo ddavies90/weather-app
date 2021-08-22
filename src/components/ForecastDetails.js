@@ -13,19 +13,26 @@ const ForecastDetails = ({ forecast }) => {
 
   return (
     <div className="forecast-details">
-      <div className="forecast-details__date">Date: {convertedDate}</div>
+      <div className="forecast-details__date">{convertedDate}</div>
       <div className="forecast-details__maxtemp">
-        Max: {temperature.max}&deg;C
+        <span className="forecast-details__key">Max: </span>
+        {`${temperature.max}\xB0C`}
       </div>
       <div className="forecast-details__mintemp">
-        Min: {temperature.min}&deg;C
+        <span className="forecast-details__key">Min: </span>
+        {`${temperature.min}\xB0C`}
       </div>
-      <div className="forecast-details__humidity">Humidity: {humidity}%</div>
+      <div className="forecast-details__humidity">
+        <span className="forecast-details__key">Humidity: </span>
+        {`${humidity}%`}
+      </div>
       <div className="forecast-details__windspeed">
-        Wind Speed: {wind.speed}mph
+        <span className="forecast-details__key">Wind Speed: </span>
+        {`${wind.speed}mph`}
       </div>
       <div className="forecast-details__winddir">
-        Wind Dir: {wind.direction}
+        <span className="forecast-details__key"> Direction: </span>
+        {`${wind.direction.toUpperCase()}`}
       </div>
     </div>
   );
