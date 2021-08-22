@@ -9,7 +9,7 @@ describe("ForecastSummary />", () => {
     description: "Clear",
     icon: "800",
     temperature: { max: 11, min: 4 },
-    onSelect: jest.fn()
+    onSelect: jest.fn(),
   };
 
   const renderData = (properties) => {
