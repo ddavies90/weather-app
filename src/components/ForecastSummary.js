@@ -18,7 +18,7 @@ const ForecastSummary = (props) => {
       <div className="forecast-summary__date">{convertedDate}</div>
       <WeatherIcon name="owm" iconId={icon} data-testid="forecast-icon" />
       <div className="forecast-summary__temperature">
-        {temperature.max}&deg;C
+        {`${temperature.max}\xB0C`}
       </div>
       <div className="forecast-summary__description">{description}</div>
       <button
@@ -27,7 +27,7 @@ const ForecastSummary = (props) => {
         className="forecast-summary__btn"
         onClick={() => onSelect(date)}
       >
-        More dets
+        More details
       </button>
     </div>
   );
