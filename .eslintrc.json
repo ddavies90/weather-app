@@ -21,11 +21,11 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "prettier"
     ],
     "rules": {
         "prettier/prettier": ["error", {
-            "editor.formatOnSave": true,
             "tabWidth": 2,
             "trailingComma": "none",
             "bracketSpacing": true,
