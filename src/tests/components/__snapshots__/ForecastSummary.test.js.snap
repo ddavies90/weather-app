@@ -31,7 +31,7 @@ exports[`ForecastSummary /> renders correctly 1`] = `
       data-testid="button-click"
       type="button"
     >
-      More dets
+      More details
     </button>
   </div>
 </DocumentFragment>

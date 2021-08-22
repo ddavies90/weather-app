@@ -8,32 +8,57 @@ exports[`<ForecastDetails /> renders correctly 1`] = `
     <div
       class="forecast-details__date"
     >
-      Date: Tue, 1 May
+      Tue, 1 May
     </div>
     <div
       class="forecast-details__maxtemp"
     >
-      Max: 12°C
+      <span
+        class="forecast-details__key"
+      >
+        Max: 
+      </span>
+      12°C
     </div>
     <div
       class="forecast-details__mintemp"
     >
-      Min: 3°C
+      <span
+        class="forecast-details__key"
+      >
+        Min: 
+      </span>
+      3°C
     </div>
     <div
       class="forecast-details__humidity"
     >
-      Humidity: 58%
+      <span
+        class="forecast-details__key"
+      >
+        Humidity: 
+      </span>
+      58%
     </div>
     <div
       class="forecast-details__windspeed"
     >
-      Wind Speed: 10mph
+      <span
+        class="forecast-details__key"
+      >
+        Wind Speed: 
+      </span>
+      10mph
     </div>
     <div
       class="forecast-details__winddir"
     >
-      Wind Dir: se
+      <span
+        class="forecast-details__key"
+      >
+         Direction: 
+      </span>
+      SE
     </div>
   </div>
 </DocumentFragment>
