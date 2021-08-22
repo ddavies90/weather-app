@@ -2,8 +2,41 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem 3rem;
 }
 
-div {
-  padding: 0.1rem;
+button {
+  background-color: blue;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1.3rem;
+  padding: 0.4rem;
+}
+
+button:hover {
+  background-color: yellow;
+  color: red;
+  transform: scale(1.2);
+}
+
+.forecast-summary__date {
+  font-size: 1.7rem;
+  color: yellow;
+}
+
+.forecast-summary__temperature,
+.forecast-summary__description {
+  font-size: 1.4rem;
+  color: cyan;
+  padding: 0.2rem;
+}
+
+.forecast-summary__description {
+  padding-bottom: 1rem;
+}
+
+.wi {
+  font-size: 2rem;
+  padding: 1rem 0rem;
 }

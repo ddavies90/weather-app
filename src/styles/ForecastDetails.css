@@ -3,4 +3,20 @@
   flex-flow: column nowrap;
   align-items: center;
   margin-top: 3rem;
+  font-size: 1.5rem;
+}
+
+.forecast-details__date {
+  font-size: 2rem;
+  background-color: yellow;
+  padding: 0.5rem 0.7rem;
+  color: red;
+}
+
+.forecast-details__maxtemp {
+  padding-top: 0.3rem;
+}
+
+.forecast-details__key {
+  color: cyan;
 }
