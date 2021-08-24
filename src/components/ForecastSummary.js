@@ -3,15 +3,19 @@ import PropTypes from "prop-types";
 import "../styles/ForecastSummary.css";
 import WeatherIcon from "react-icons-weather";
 
-const ForecastSummary = (props) => {
-  const { date, temperature, description, icon, onSelect } = props;
+const ForecastSummary = ({
+  date,
+  temperature,
+  description,
+  icon,
+  onSelect,
+  isSelected
+}) => {
   const convertedDate = new Date(date).toLocaleDateString("default", {
     weekday: "short",
     day: "numeric",
     month: "short"
   });
-  // const year = new Date(date).getFullYear().toString();
-  // const dateStr = convertedDate.replace(` ${year}`, "");
 
   return (
     <div className="forecast-summary" data-testid="forecast-summary">
@@ -24,7 +28,7 @@ const ForecastSummary = (props) => {
       <button
         type="button"
         data-testid="button-click"
-        className="forecast-summary__btn"
+        className={`forecast-summary__btn${isSelected ? "--active" : ""}`}
         onClick={() => onSelect(date)}
       >
         More details
@@ -41,7 +45,12 @@ ForecastSummary.propTypes = {
     max: PropTypes.number,
     min: PropTypes.number
   }).isRequired,
-  onSelect: PropTypes.func.isRequired
+  onSelect: PropTypes.func.isRequired,
+  isSelected: PropTypes.bool
+};
+
+ForecastSummary.defaultProps = {
+  isSelected: false
 };
 
 export default ForecastSummary;
