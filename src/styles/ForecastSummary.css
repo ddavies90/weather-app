@@ -20,6 +20,11 @@ button:hover {
   transform: scale(1.2);
 }
 
+.forecast-summary__btn--active {
+ background-color: yellow;
+ color: red;
+}
+
 .forecast-summary__date {
   font-size: 1.7rem;
   color: yellow;
