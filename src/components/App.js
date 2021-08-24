@@ -1,5 +1,5 @@
 import "../styles/App.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import LocationDetails from "./LocationDetails";
 import ForecastSummaries from "./ForecastSummaries";
 import ForecastDetails from "./ForecastDetails";
@@ -20,6 +20,17 @@ const App = () => {
     (forecast) => forecast.date === selectedDate
   );
 
+  const augmentedForecasts = forecasts.map((forecast) => {
+    let newForecast = forecast;
+    if (forecast.date === selectedDate) {
+      newForecast = {
+        ...forecast,
+        isSelected: true
+      };
+    }
+    return newForecast;
+  });
+
   const handleCitySearch = async () => {
     const response = await getForecasts(searchText);
     setForecasts(response.forecasts);
@@ -27,12 +38,12 @@ const App = () => {
     setSelectedDate(response.forecasts[0].date);
   };
 
-  useEffect(async () => {
-    const response = await getForecasts();
-    setForecasts(response.forecasts);
-    setLocation(response.location);
-    setSelectedDate(response.forecasts[0].date);
-  }, []);
+  // useEffect(async () => {
+  //   const response = await getForecasts();
+  //   setForecasts(response.forecasts);
+  //   setLocation(response.location);
+  //   setSelectedDate(response.forecasts[0].date);
+  // }, []);
 
   return (
     <div className="weather-app">
@@ -43,7 +54,7 @@ const App = () => {
         citySearchFunc={handleCitySearch}
       />
       <ForecastSummaries
-        forecasts={forecasts}
+        forecasts={augmentedForecasts}
         onForecastSelect={handleForecastSelect}
       />
       {selectedForecast && <ForecastDetails forecast={selectedForecast} />}
