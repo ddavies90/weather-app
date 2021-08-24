@@ -7,7 +7,7 @@ const ForecastSummaries = ({ forecasts, onForecastSelect }) => {
   return (
     <div className="forecast-summaries">
       {forecasts.map((forecast) => {
-        const { date, temperature, icon, description } = forecast;
+        const { date, temperature, icon, description, isSelected } = forecast;
         return (
           <ForecastSummary
             key={date}
@@ -16,6 +16,7 @@ const ForecastSummaries = ({ forecasts, onForecastSelect }) => {
             temperature={temperature}
             description={description}
             onSelect={onForecastSelect}
+            isSelected={isSelected}
           />
         );
       })}
