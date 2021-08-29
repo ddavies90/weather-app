@@ -6,6 +6,8 @@ import ForecastDetails from "./ForecastDetails";
 import getForecasts from "../requests/getForecasts";
 import SearchForm from "./SearchForm";
 
+require("dotenv").config();
+
 const App = () => {
   const [forecasts, setForecasts] = useState([]);
   const [location, setLocation] = useState({ city: "", country: "" });
