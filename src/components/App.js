@@ -17,12 +17,12 @@ const App = () => {
   };
 
   const selectedForecast = forecasts.find(
-    (forecast) => forecast.date === selectedDate
+    (forecast) => forecast.dt === selectedDate
   );
 
   const augmentedForecasts = forecasts.map((forecast) => {
     let newForecast = forecast;
-    if (forecast.date === selectedDate) {
+    if (forecast.dt === selectedDate) {
       newForecast = {
         ...forecast,
         isSelected: true
@@ -32,10 +32,11 @@ const App = () => {
   });
 
   const handleCitySearch = async () => {
-    const response = await getForecasts(searchText);
-    setForecasts(response.forecasts);
-    setLocation(response.location);
-    setSelectedDate(response.forecasts[0].date);
+    const { daily, countryCode, name } = await getForecasts(searchText);
+    const weatherForecasts = daily.slice(0, 5);
+    setForecasts(weatherForecasts);
+    setLocation({ city: name, country: countryCode });
+    setSelectedDate(weatherForecasts[0].dt);
   };
 
   // useEffect(async () => {
@@ -47,12 +48,16 @@ const App = () => {
 
   return (
     <div className="weather-app">
-      <LocationDetails city={location.city} country={location.country} />
-      <SearchForm
-        searchValue={searchText}
-        setSearchValue={setSearchText}
-        citySearchFunc={handleCitySearch}
-      />
+      <div className={`topbar${location.city ? "" : "-preload"}`}>
+        {location.city && (
+          <LocationDetails city={location.city} country={location.country} />
+        )}
+        <SearchForm
+          searchValue={searchText}
+          setSearchValue={setSearchText}
+          citySearchFunc={handleCitySearch}
+        />
+      </div>
       <ForecastSummaries
         forecasts={augmentedForecasts}
         onForecastSelect={handleForecastSelect}
