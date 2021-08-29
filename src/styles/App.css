@@ -20,3 +20,16 @@ body {
   width: 100vw;
   height: 100vh;
 }
+
+.topbar,
+.topbar-preload {
+  display: flex;
+  justify-content: space-between;
+  background-color: yellow;
+  width: 100%;
+  min-height: 6rem;
+}
+
+.topbar-preload {
+  justify-content: flex-end;
+}
