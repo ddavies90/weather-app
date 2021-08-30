@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import "../styles/LocationDetails.css";
 
-// eslint-disable-next-line consistent-return
 const LocationDetails = (props) => {
   const { city, country, error } = props;
   if (error) {
