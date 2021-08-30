@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "../styles/SearchForm.css";
 
 const SearchForm = ({ searchValue, setSearchValue, citySearchFunc }) => {
   const handleInputChange = (event) => {
@@ -7,7 +8,7 @@ const SearchForm = ({ searchValue, setSearchValue, citySearchFunc }) => {
   };
 
   return (
-    <div>
+    <div className="search-form">
       <label htmlFor="search">
         <input
           type="text"

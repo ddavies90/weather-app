@@ -38,21 +38,18 @@ const App = () => {
     setSelectedDate(response.forecasts[0].date);
   };
 
-  // useEffect(async () => {
-  //   const response = await getForecasts();
-  //   setForecasts(response.forecasts);
-  //   setLocation(response.location);
-  //   setSelectedDate(response.forecasts[0].date);
-  // }, []);
-
   return (
     <div className="weather-app">
-      <LocationDetails city={location.city} country={location.country} />
-      <SearchForm
-        searchValue={searchText}
-        setSearchValue={setSearchText}
-        citySearchFunc={handleCitySearch}
-      />
+      <div className={`topbar${location.city ? "" : "-preload"}`}>
+        {location.city && (
+          <LocationDetails city={location.city} country={location.country} />
+        )}
+        <SearchForm
+          searchValue={searchText}
+          setSearchValue={setSearchText}
+          citySearchFunc={handleCitySearch}
+        />
+      </div>
       <ForecastSummaries
         forecasts={augmentedForecasts}
         onForecastSelect={handleForecastSelect}
