@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable prettier/prettier */
 import "../styles/App.css";
 import React, { useState } from "react";
 import LocationDetails from "./LocationDetails";
@@ -11,6 +13,7 @@ const App = () => {
   const [location, setLocation] = useState({ city: "", country: "" });
   const [selectedDate, setSelectedDate] = useState(0);
   const [searchText, setSearchText] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleForecastSelect = (date) => {
     setSelectedDate(date);
@@ -32,29 +35,53 @@ const App = () => {
   });
 
   const handleCitySearch = async () => {
-    const response = await getForecasts(searchText);
-    setForecasts(response.forecasts);
-    setLocation(response.location);
-    setSelectedDate(response.forecasts[0].date);
+    try {
+      const response = await getForecasts(searchText);
+      setForecasts(response.forecasts);
+      setLocation(response.location);
+      setSelectedDate(response.forecasts[0].date);
+      setErrorMessage("");
+    } catch (e) {
+      if (e.response.status === 404) {
+        console.error("Location not found", e);
+        setLocation({ city: "", country: "" });
+        setErrorMessage(
+          "Location not found. Please note: This app only queries cities in the UK. Try again with a different city."
+        );
+      }
+      if (e.response.status === 500) {
+        console.error("Server error", e);
+        setLocation({ city: "", country: "" });
+        setErrorMessage("Server error. Please try again later.");
+      }
+    }
   };
 
   return (
     <div className="weather-app">
-      <div className={`topbar${location.city ? "" : "-preload"}`}>
-        {location.city && (
-          <LocationDetails city={location.city} country={location.country} />
-        )}
+      <div className={`topbar${location.city || errorMessage ? "" : "-preload"}`}>
+        {(location.city || errorMessage) && (
+            <LocationDetails
+              city={location.city}
+              country={location.country}
+              error={errorMessage}
+            />
+          )}
         <SearchForm
           searchValue={searchText}
           setSearchValue={setSearchText}
           citySearchFunc={handleCitySearch}
         />
       </div>
-      <ForecastSummaries
-        forecasts={augmentedForecasts}
-        onForecastSelect={handleForecastSelect}
-      />
-      {selectedForecast && <ForecastDetails forecast={selectedForecast} />}
+      {!errorMessage && (
+        <>
+          <ForecastSummaries
+            forecasts={augmentedForecasts}
+            onForecastSelect={handleForecastSelect}
+          />
+          {selectedForecast && <ForecastDetails forecast={selectedForecast} />}
+        </>
+      )}
     </div>
   );
 };
