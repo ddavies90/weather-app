@@ -25,23 +25,11 @@ describe("<ForecastDetails />", () => {
   it("renders correct props with appropriate formatting", () => {
     render(<ForecastDetails forecast={validProps} />);
 
-    expect(screen.getByText("Date: Tue, 1 May")).toHaveClass(
-      "forecast-details__date"
-    );
-    expect(screen.getByText("Max: 12°C")).toHaveClass(
-      "forecast-details__maxtemp"
-    );
-    expect(screen.getByText("Min: 3°C")).toHaveClass(
-      "forecast-details__mintemp"
-    );
-    expect(screen.getByText("Humidity: 58%")).toHaveClass(
-      "forecast-details__humidity"
-    );
-    expect(screen.getByText("Wind Speed: 10mph")).toHaveClass(
-      "forecast-details__windspeed"
-    );
-    expect(screen.getByText("Wind Dir: se")).toHaveClass(
-      "forecast-details__winddir"
-    );
+    expect(screen.getByText("Tue, 1 May")).toBeInTheDocument();
+    expect(screen.getByText("12°C")).toBeInTheDocument();
+    expect(screen.getByText("3°C")).toBeInTheDocument();
+    expect(screen.getByText("58%")).toBeInTheDocument();
+    expect(screen.getByText("10mph")).toBeInTheDocument();
+    expect(screen.getByText("SE")).toBeInTheDocument();
   });
 });

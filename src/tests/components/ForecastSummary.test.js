@@ -9,7 +9,7 @@ describe("ForecastSummary />", () => {
     description: "Clear",
     icon: "800",
     temperature: { max: 11, min: 4 },
-    onSelect: jest.fn(),
+    onSelect: jest.fn()
   };
 
   const renderData = (properties) => {
@@ -34,15 +34,9 @@ describe("ForecastSummary />", () => {
   it("renders correct values for props and in the correct formats", () => {
     renderData(validProps);
 
-    expect(screen.getByText("11°C")).toHaveClass(
-      "forecast-summary__temperature"
-    );
-    expect(screen.getByText("Mon, 30 Apr")).toHaveClass(
-      "forecast-summary__date"
-    );
-    expect(screen.getByText("Clear")).toHaveClass(
-      "forecast-summary__description"
-    );
+    expect(screen.getByText("11°C")).toBeInTheDocument();
+    expect(screen.getByText("Mon, 30 Apr")).toBeInTheDocument();
+    expect(screen.getByText("Clear")).toBeInTheDocument();
     expect(screen.getByTestId("forecast-icon")).toHaveClass("wi-day-sunny");
   });
 

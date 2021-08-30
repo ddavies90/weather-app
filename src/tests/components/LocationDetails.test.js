@@ -1,13 +1,11 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import LocationDetails from "../../components/LocationDetails";
 
 describe("LocationDetails", () => {
   it("renders correct city and country props", () => {
-    const { getByText } = render(
-      <LocationDetails city="Manchester" country="UK" />
-    );
+    render(<LocationDetails city="Manchester" country="UK" />);
 
-    expect(getByText("Manchester,")).toHaveClass("location-details");
+    expect(screen.getByTestId("location-header")).toBeInTheDocument();
   });
 });
