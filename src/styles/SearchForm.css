@@ -1,0 +1,33 @@
+.search-form {
+  align-self: center;
+}
+
+.search-form button {
+  margin-left: 0.7rem;
+}
+
+.search-form button:hover {
+  background-color: red;
+  color: yellow;
+  transform: scale(1.2);
+  box-shadow: 0 0 0 2px blue;
+}
+
+.search-form input {
+  font-family: "VT323", monospace;
+  font-size: 1.4rem;
+  border: none;
+  width: 12rem;
+  padding: 0.3rem;
+  background-color: blue;
+}
+
+.search-form input::placeholder {
+  color: #dce6f5;
+  opacity: 1;
+}
+
+.search-form input:focus,
+.search-form button:focus {
+  outline: 2px solid red;
+}

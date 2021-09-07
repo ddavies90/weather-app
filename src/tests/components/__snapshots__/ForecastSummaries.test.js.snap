@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ForecastSummaries /> renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="forecast-summaries"
+  >
+    <div
+      class="forecast-summary"
+      data-testid="forecast-summary"
+    >
+      <div
+        class="forecast-summary__date"
+      >
+        Mon, 30 Apr
+      </div>
+      <i
+        class="wi wi-day-sunny"
+        data-testid="forecast-icon"
+        name="owm"
+      />
+      <div
+        class="forecast-summary__temperature"
+      >
+        11°C
+      </div>
+      <div
+        class="forecast-summary__description"
+      >
+        Clear
+      </div>
+      <button
+        class="forecast-summary__btn"
+        data-testid="button-click"
+        type="button"
+      >
+        More details
+      </button>
+    </div>
+    <div
+      class="forecast-summary"
+      data-testid="forecast-summary"
+    >
+      <div
+        class="forecast-summary__date"
+      >
+        Tue, 1 May
+      </div>
+      <i
+        class="wi wi-day-thunderstorm"
+        data-testid="forecast-icon"
+        name="owm"
+      />
+      <div
+        class="forecast-summary__temperature"
+      >
+        13°C
+      </div>
+      <div
+        class="forecast-summary__description"
+      >
+        Stormy
+      </div>
+      <button
+        class="forecast-summary__btn"
+        data-testid="button-click"
+        type="button"
+      >
+        More details
+      </button>
+    </div>
+    <div
+      class="forecast-summary"
+      data-testid="forecast-summary"
+    >
+      <div
+        class="forecast-summary__date"
+      >
+        Wed, 2 May
+      </div>
+      <i
+        class="wi wi-day-snow"
+        data-testid="forecast-icon"
+        name="owm"
+      />
+      <div
+        class="forecast-summary__temperature"
+      >
+        1°C
+      </div>
+      <div
+        class="forecast-summary__description"
+      >
+        Heavy Snow
+      </div>
+      <button
+        class="forecast-summary__btn"
+        data-testid="button-click"
+        type="button"
+      >
+        More details
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
