@@ -11,20 +11,30 @@ const ForecastSummary = ({
   onSelect,
   isSelected
 }) => {
-  const convertedDate = new Date(date).toLocaleDateString("default", {
+  const convertedDate = new Date(date * 1000).toLocaleDateString("default", {
     weekday: "short",
     day: "numeric",
     month: "short"
   });
 
+  const capitaliseFirstLetters = (string) => {
+    const strArray = string.split(" ");
+    const capitalisedWords = strArray.map(
+      (str) => str.charAt(0).toUpperCase() + str.slice(1)
+    );
+    return capitalisedWords.join(" ");
+  };
+
   return (
     <div className="forecast-summary" data-testid="forecast-summary">
       <div className="forecast-summary__date">{convertedDate}</div>
       <WeatherIcon name="owm" iconId={icon} data-testid="forecast-icon" />
-      <div className="forecast-summary__temperature">
-        {`${temperature.max}\xB0C`}
+      <div className="forecast-summary__temperature">{`${Math.round(
+        temperature.max
+      )}\xB0C`}</div>
+      <div className="forecast-summary__description">
+        {capitaliseFirstLetters(description)}
       </div>
-      <div className="forecast-summary__description">{description}</div>
       <button
         type="button"
         data-testid="button-click"
@@ -41,10 +51,7 @@ ForecastSummary.propTypes = {
   date: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
-  temperature: PropTypes.shape({
-    max: PropTypes.number,
-    min: PropTypes.number
-  }).isRequired,
+  temperature: PropTypes.number.isRequired,
   onSelect: PropTypes.func.isRequired,
   isSelected: PropTypes.bool
 };

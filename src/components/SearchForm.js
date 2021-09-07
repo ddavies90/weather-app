@@ -13,7 +13,7 @@ const SearchForm = ({ searchValue, setSearchValue, citySearchFunc }) => {
         <input
           type="text"
           name="search"
-          placeholder="Enter a city name"
+          placeholder="Enter a location"
           onChange={handleInputChange}
           value={searchValue}
           onKeyDown={(e) => {

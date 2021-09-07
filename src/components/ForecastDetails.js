@@ -3,9 +3,15 @@ import PropTypes from "prop-types";
 import "../styles/ForecastDetails.css";
 
 const ForecastDetails = ({ forecast }) => {
-  const { date, humidity, temperature, wind } = forecast;
+  const {
+    dt: date,
+    wind_deg: windDeg,
+    wind_speed: windSpeed,
+    temp,
+    humidity
+  } = forecast;
 
-  const convertedDate = new Date(date).toLocaleDateString("default", {
+  const convertedDate = new Date(date * 1000).toLocaleDateString("default", {
     weekday: "short",
     day: "numeric",
     month: "short"
@@ -16,11 +22,11 @@ const ForecastDetails = ({ forecast }) => {
       <div className="forecast-details__date">{convertedDate}</div>
       <div className="forecast-details__maxtemp">
         <span className="forecast-details__key">Max: </span>
-        {`${temperature.max}\xB0C`}
+        {`${Math.round(temp.max)}\xB0C`}
       </div>
       <div className="forecast-details__mintemp">
         <span className="forecast-details__key">Min: </span>
-        {`${temperature.min}\xB0C`}
+        {`${Math.round(temp.min)}\xB0C`}
       </div>
       <div className="forecast-details__humidity">
         <span className="forecast-details__key">Humidity: </span>
@@ -28,11 +34,11 @@ const ForecastDetails = ({ forecast }) => {
       </div>
       <div className="forecast-details__windspeed">
         <span className="forecast-details__key">Wind Speed: </span>
-        {`${wind.speed}mph`}
+        {`${Math.round(windSpeed)}mph`}
       </div>
       <div className="forecast-details__winddir">
         <span className="forecast-details__key"> Direction: </span>
-        {`${wind.direction.toUpperCase()}`}
+        {`${windDeg}\xB0`}
       </div>
     </div>
   );
@@ -40,17 +46,14 @@ const ForecastDetails = ({ forecast }) => {
 
 ForecastDetails.propTypes = {
   forecast: PropTypes.shape({
-    date: PropTypes.number,
-    temperature: PropTypes.shape({
-      max: PropTypes.number,
-      min: PropTypes.number
-    }),
-    wind: PropTypes.shape({
-      speed: PropTypes.number,
-      direction: PropTypes.string
+    dt: PropTypes.number,
+    temp: PropTypes.shape({
+      min: PropTypes.number,
+      max: PropTypes.number
     }),
     humidity: PropTypes.number,
-    description: PropTypes.string
+    wind_speed: PropTypes.number,
+    wind_deg: PropTypes.number
   }).isRequired
 };
 

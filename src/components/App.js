@@ -8,6 +8,8 @@ import ForecastDetails from "./ForecastDetails";
 import getForecasts from "../requests/getForecasts";
 import SearchForm from "./SearchForm";
 
+require("dotenv").config();
+
 const App = () => {
   const [forecasts, setForecasts] = useState([]);
   const [location, setLocation] = useState({ city: "", country: "" });
@@ -20,12 +22,12 @@ const App = () => {
   };
 
   const selectedForecast = forecasts.find(
-    (forecast) => forecast.date === selectedDate
+    (forecast) => forecast.dt === selectedDate
   );
 
   const augmentedForecasts = forecasts.map((forecast) => {
     let newForecast = forecast;
-    if (forecast.date === selectedDate) {
+    if (forecast.dt === selectedDate) {
       newForecast = {
         ...forecast,
         isSelected: true
@@ -67,12 +69,14 @@ const App = () => {
               error={errorMessage}
             />
           )}
+
         <SearchForm
           searchValue={searchText}
           setSearchValue={setSearchText}
           citySearchFunc={handleCitySearch}
         />
       </div>
+
       {!errorMessage && (
         <>
           <ForecastSummaries
